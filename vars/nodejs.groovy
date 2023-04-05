@@ -1,5 +1,6 @@
-def lintChecks(COMPONENT) {
-    sh ''' 
+def lintChecks() {
+    sh '''  
+            echo Lint Checks for ${COMPONENT}
             echo installing jslint
             # npm install jslint
             # ls -ltr node_modules/jslint/bin/
@@ -10,14 +11,14 @@ def lintChecks(COMPONENT) {
 }
 
 // Call is the default function which will be called when you call the fileName
-def call(COMPONENT) {
+def call() {
     pipeline {
         agents any 
         stages {
             stage('Lint Checks') {
                 steps {
                     script {
-                        lintChecks(COMPONENT)
+                        lintChecks()
                     }
                 }
             }
