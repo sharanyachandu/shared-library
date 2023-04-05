@@ -13,7 +13,7 @@ def lintChecks() {
 // Call is the default function which will be called when you call the fileName
 def call() {
     pipeline {
-        agents any 
+        agent any 
         stages {
             stage('Lint Checks') {
                 steps {
