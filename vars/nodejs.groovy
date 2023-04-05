@@ -5,7 +5,7 @@ def lintChecks() {
             # npm install jslint
             # ls -ltr node_modules/jslint/bin/
             # node_modules/jslint/bin/jslint.js server.js
-            echo performing lint checks"
+            echo performing lint checks
             echo performing lint checks completed      
     ''' 
 }
