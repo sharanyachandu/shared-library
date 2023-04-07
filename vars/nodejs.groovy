@@ -42,6 +42,12 @@ def call() {
                 }
             }
 
+            stage('Performing npm install') {
+                steps {
+                    sh "echo HAI"
+                }
+            }
+
         }
     }
 }
