@@ -30,6 +30,27 @@ def call() {
                     }
                 }
             }
+        stage('Test Cases') {
+            parallel {
+                stage('Unit Testing') {
+                    steps {
+                        // sh "npm test"
+                        sh "echo Performing Unit Testing"
+                    }
+                }
+                stage('Integration Testing') {
+                    steps {
+                        // sh "npm verify"
+                        sh "echo Integration Unit Testing"
+                    }
+                }
+                stage('Functional Testing') {
+                    steps {
+                        sh "echo Integration Unit Testing"
+                        }
+                    }
+                }
+            }
         }
     }
 }
