@@ -17,7 +17,9 @@ def call() {
 
         environment { 
             SONAR = credentials('SONAR') 
+            NEXUS = credentials('NEXUS')
             SONAR_URL = "172.31.9.236"
+            NEXUS_URL = "172.31.13.88"
         }
 
         stages {
@@ -34,12 +36,6 @@ def call() {
                         env.ARGS="-Dsonar.sources=."
                         common.sonarChecks()
                     }
-                }
-            }
-
-            stage('Performing npm install') {
-                steps {
-                    sh "npm install"
                 }
             }
 
@@ -68,14 +64,16 @@ def call() {
         stage('Prepare the artifacts') {
             when { expression { env.TAG_NAME != null } }
             steps {
-                sh "echo Prepare the artifacts"
+                    sh "npm install"
+                    sh "echo Preparing the artifacts"
+                    sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
                 }
             }
 
         stage('Publish the artifacts') {
             when { expression { env.TAG_NAME != null } }
             steps {
-                sh "echo Publishing the artifacts"
+                sh "curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
                 }
             }
         }
