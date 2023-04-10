@@ -1,6 +1,6 @@
 // Scripted Pipeline
 
-def call {
+def call() {
     node {
         env.APP_TYPE = "nodejs" 
         common.lintChecks()
