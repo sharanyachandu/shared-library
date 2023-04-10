@@ -92,18 +92,23 @@ if(env.UPLOAD_STATUS == "") {
         }
         else if(env.APP_TYPE == "maven") {  
           sh '''
-                echo "Yet To Fill"
+                mvn clean package
+                mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar 
+                zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
           '''
       }
         else if(env.APP_TYPE == "python") {  
           sh '''
-                echo "Yet To Fill"
+                zip -r ${COMPOMENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
           '''
       }
         else {  
           sh '''
-                echo "Yet To Fill"
-          '''
+               echo "Frontend Component Is Executing"
+               cd static/
+               zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+
+              '''
             }
         }
       
