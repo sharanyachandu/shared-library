@@ -104,6 +104,7 @@ if(env.UPLOAD_STATUS == "") {
           sh '''
                 echo "Yet To Fill"
           '''
-      }
-   }
+        }
+    }
+  }
 }
