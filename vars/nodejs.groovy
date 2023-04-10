@@ -80,7 +80,7 @@ def call() {
 //             steps {
 //                     sh "npm install"
 //                     sh "echo Preparing the artifacts"
-//                     sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
+//                     sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
 //                 }
 //             }
 
