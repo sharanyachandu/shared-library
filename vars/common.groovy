@@ -99,7 +99,7 @@ if(env.UPLOAD_STATUS == "") {
       }
         else if(env.APP_TYPE == "python") {  
           sh '''
-                zip -r ${COMPOMENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
+                zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
           '''
       }
         else {  
