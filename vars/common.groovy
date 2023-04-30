@@ -77,7 +77,7 @@ def lintChecks() {
 def artifacts() {
 
     stage('Check The Release') {
-        env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://172.31.13.88:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true')
+        env.UPLOAD_STATUS=sh(returnStdout: true, script: 'curl -L -s http://172.31.15.108:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true')
         print UPLOAD_STATUS 
     }
 
